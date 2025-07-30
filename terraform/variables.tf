@@ -100,6 +100,14 @@ variable "CONFLUENCE_API_TOKEN" {
   default     = ""
 }
 
+# Add lowercase version for backwards compatibility with tfvars files
+variable "confluence_api_token" {
+  description = "API token for Confluence authentication (lowercase variant for tfvars compatibility)"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
 variable "confluence_space_keys" {
   description = "List of Confluence space keys to import. For single space: ['DSO'], for multiple: ['DSO', 'DOCS', 'TECH']"
   type        = list(string)

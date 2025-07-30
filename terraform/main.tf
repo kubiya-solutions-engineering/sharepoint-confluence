@@ -96,7 +96,7 @@ EOT
 # Create Confluence API token secret (always create since we always call confluence data source)
 resource "kubiya_secret" "confluence_api_token" {
   name        = "CONFLUENCE_API_TOKEN"
-  value       = var.CONFLUENCE_API_TOKEN
+  value       = var.confluence_api_token != "" ? var.confluence_api_token : var.CONFLUENCE_API_TOKEN
   description = "Confluence API token for the Knowledge Assistant"
 
   lifecycle {
@@ -147,7 +147,7 @@ data "external" "confluence_content" {
   query = {
     CONFLUENCE_URL = var.confluence_url
     CONFLUENCE_USERNAME = var.confluence_username
-    CONFLUENCE_API_TOKEN = var.CONFLUENCE_API_TOKEN
+    CONFLUENCE_API_TOKEN = var.confluence_api_token != "" ? var.confluence_api_token : var.CONFLUENCE_API_TOKEN
     space_keys = local.space_keys_string
     include_blogs = var.import_confluence_blogs ? "true" : "false"
     max_pages = var.max_pages
