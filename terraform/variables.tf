@@ -93,16 +93,8 @@ variable "confluence_username" {
   default     = ""
 }
 
-variable "CONFLUENCE_API_TOKEN" {
-  description = "API token for Confluence authentication"
-  type        = string
-  sensitive   = true
-  default     = ""
-}
-
-# Add lowercase version for backwards compatibility with tfvars files
 variable "confluence_api_token" {
-  description = "API token for Confluence authentication (lowercase variant for tfvars compatibility)"
+  description = "API token for Confluence authentication"
   type        = string
   sensitive   = true
   default     = ""
